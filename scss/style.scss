@@ -86,28 +86,3 @@ main {
     }
   }
 }
-@mixin animate-hand($start) {
-  $deg: math.div($start, 60) * 360deg - 180deg;
-  @keyframes animate-hand-#{$start} {
-    from {
-      transform: rotate($deg)
-    }
-    to {
-      transform: rotate($deg + 360deg)
-    }
-  }
-}
-@for $i from 0 through 59 {
-  @include animate-hand($i);
-  .animate #second.second-#{$i} {
-    animation: animate-hand-#{$i} 60s linear infinite;
-  }
-  .animate #subsecond.subsecond-#{$i} {
-    animation: animate-hand-#{$i} 1s linear infinite;
-  }
-
-  #second.second-#{$i},
-  #subsecond.subsecond-#{$i} {
-    transform: rotate(math.div($i, 60) * 360deg - 180deg);
-  }
-}
